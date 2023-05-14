@@ -195,12 +195,14 @@
 									<div class="feature-img">
 										<img class="img-fluid" src="{{post.image.url}}" alt="">
 									</div>
-									<a class="posts-title" href="{% url 'blog:single' %}"><h3>{{post.title}}</h3></a>
-									<p class="excert">
-										{{post.content}}
-											</p>
-									{% comment %} <a href="{% url 'blog:single'%}" class="primary-btn">View More</a> {% endcomment %}
-									<a href="/blog/post-{{post.id}}"class="primary-btn" >View More<h3></h3></a>
+									<a class="posts-title" href="{% url 'blog:single' pid=post.id %}"><h3>{{post.title}}</h3></a>
+									
+									<p>{{post.content}}</p>
+									
+									<a  class="primary-btn" href="{% url 'blog:single' pid=post.id %}">View More</a>
+									
+									{% comment %} <a href="/blog/post-{{post.id}}"class="primary-btn" >View More<h3></h3></a> {% endcomment %}
+									
 								</div>
 							</div>
 							{% endfor %}
