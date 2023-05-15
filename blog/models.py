@@ -27,5 +27,8 @@ class Post(models.Model):
          return self.title
      
     def snippets(self):
-        return self.content[:100]+"..."
+        
+        l =self.content.split()[:3]
+        listToStr = ' '.join(map(str, l))
+        return listToStr +' ...'
     
