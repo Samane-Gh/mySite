@@ -3,8 +3,8 @@ from blog.models import Post
 from django.utils import timezone
 # Create your views here.
 def blog_view(request,pid=1):
-    posts = Post.objects.filter(status=1).order_by('title')
-    #posts = Post.objects.filter(published_date__lte=timezone.now())
+    #posts = Post.objects.filter(status=1).order_by('title')
+    posts = Post.objects.order_by('published_date')
     contex = {'posts': posts}
     return render(request,'blog/blog-home.html',contex)
 
@@ -15,20 +15,18 @@ def blog_single(request,pid=None):
     post = Post.objects.get(id =pid)
     post.counted_views +=1
     post.save()
-    next_post = Post.objects.filter(title__gt=post).order_by('title').first()
-    prev_post =Post.objects.filter(title__lt=post).order_by('title').last()
+
+    next_post = Post.objects.filter(published_date__gt=post.published_date).order_by('published_date').first()
+    prev_post =Post.objects.filter(published_date__lt=post.published_date).order_by('published_date').last()
     contex = {'post': post,'next_post': next_post,'prev_post': prev_post}
     
     post.save()
     return render(request,'blog/blog-single.html',contex)
     
 
-def test(request,pid):
-    post = Post.objects.get(id=pid)
-    contex = {'post': post}
-    post.counted_views +=1
-    post.save()
-    return render(request,'test.html',contex)
+def test(request):
+    
+    return render(request,'test.html')
 
 
 
