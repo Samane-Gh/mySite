@@ -8,7 +8,16 @@ class Contact(models.Model):
     massage = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now_add=True)
-
+    
+    class Meta:
+        ordering = ['created_date']
     def __str__(self):
-     return self.name    
+        return self.name  
+ 
+class Newsletter(models.Model):
+    email = models.EmailField()
+     
+    def __str__(self):
+        return self.email
+   
 # Create your models here.

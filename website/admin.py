@@ -1,6 +1,6 @@
 #change and get a structers to admin
 from django.contrib import admin
-from website.models import Contact
+from website.models import Contact,Newsletter
  
 # Register your models here.
 class ContactAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields =('name','massage',)
 
 admin.site.register(Contact,ContactAdmin)
+admin.site.register(Newsletter)
