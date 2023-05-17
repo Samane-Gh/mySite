@@ -3,6 +3,7 @@ from blog.models import Post
 from blog.models import Category
 from django.utils import timezone
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+
 # Create your views here.
 def blog_view(request,**kwargs):
     #posts = Post.objects.filter(status=1).order_by('title')
@@ -41,16 +42,12 @@ def blog_category(request,cat_name):
     contex ={'posts': posts}
     return render(request,'blog/blog-home.html',contex)
 
-def test(request):   
-    return render(request,'test.html')
-
 def blog_search(request):
     posts = Post.objects.filter(status=1)
     if request.method == 'GET' :
         if request.GET.get('s'):
            posts = posts.filter(content__contains=request.GET.get('s')) 
-        #print(request.GET.get('s'))
-        
+        #print(request.GET.get('s'))   
     contex = {'posts': posts}
     return render(request,'blog/blog-home.html',contex)    
 
