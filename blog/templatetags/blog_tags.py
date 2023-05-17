@@ -20,6 +20,10 @@ def postcategories():
     Categories = Category.objects.all()
     cat_dict = {}
     for name in Categories:
-        cat_dict[name]=posts.filter(Category=name).count()
-        
+        cat_dict[name]=posts.filter(Category=name).count()    
     return {'categories': cat_dict}
+
+@register.inclusion_tag('blog/blog-latest-posts.html')
+def latest_posts(arg=6):
+    posts = Post.objects.filter(status=1).order_by('published_date')[:arg]
+    return {'posts':posts}
