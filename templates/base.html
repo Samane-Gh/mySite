@@ -30,11 +30,7 @@
             <ul class="nav-menu">
               <li><a href="{% url 'website:index' %}">Home</a></li>
               <li><a href="{% url 'website:about'%}">About</a></li>
-              <li><a href="{% url 'blog:index'%}">Blog </a></li>
-                
-                
-              
-				          					          		          
+              <li><a href="{% url 'blog:index'%}">Blog </a></li>          					          		          
               <li><a href="{% url 'website:contact' %}">Contact</a></li>
             </ul>
           </nav><!-- #nav-menu-container -->					      		  
@@ -71,6 +67,26 @@
         <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">				
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
+    {% comment %} {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %} {% endcomment %}
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="True">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+
+
+
     {%block contant%}
 
 
