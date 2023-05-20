@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website.apps.WebsiteConfig',
-    'blog'
+    'blog',
+    'django.contrib.humanize',
     
 ]
 
