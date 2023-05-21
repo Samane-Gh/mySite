@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'website.apps.WebsiteConfig',
+    'robots',
     
     'blog',
     'django.contrib.humanize',
@@ -59,8 +60,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+# sites framework
 ROOT_URLCONF = 'mysite.urls'
+
+#robots
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
 
 TEMPLATES = [
     {
