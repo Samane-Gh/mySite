@@ -15,6 +15,7 @@ urlpatterns = [
     path('auther/<str:auther_name>',blog_view,name='auther'),
     path('single',blog_single,name='single'),
     path('search/',blog_search,name='search'),
+    
     #path('test',test,name='test'),
    
     
