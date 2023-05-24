@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'taggit',
     'blog',
     'django.contrib.humanize',
+    'accounts',
     
      
 ]
