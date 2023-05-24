@@ -36,20 +36,18 @@ def blog_single(request,pid=None):
             messages.add_message(request,messages.SUCCESS,'your comment submited successfully')
         else:
            messages.add_message(request,messages.ERROR,'yourc comment did not submited successfully') 
-    else:      
-        if pid is None:
-            contex = {'post': {}}
-            return render(request,'blog/blog-single.html',contex)        
-        post = Post.objects.get(id =pid)
-        post.counted_views +=1
-        next_post = Post.objects.filter(published_date__gt=post.published_date).order_by('published_date').first()
-        prev_post =Post.objects.filter(published_date__lt=post.published_date).order_by('published_date').last()
-        comments = Comment.objects.filter(post = post.id,approved=True)
-        form = CommentForm()
-        contex = {'post': post,'next_post': next_post,'prev_post': prev_post,'comments': comments,'form': form}
-        
-        post.save()
-        return render(request,'blog/blog-single.html',contex)
+    # else:      
+    #     if pid is None:
+    #         contex = {'post': {}}
+    #         return render(request,'blog/blog-single.html',contex)        
+    post = Post.objects.get(id =pid)
+    post.counted_views +=1
+    next_post = Post.objects.filter(published_date__gt=post.published_date).order_by('published_date').first()
+    prev_post =Post.objects.filter(published_date__lt=post.published_date).order_by('published_date').last()
+    comments = Comment.objects.filter(post = post.id,approved=True)
+    form = CommentForm()
+    contex = {'post': post,'next_post': next_post,'prev_post': prev_post,'comments': comments,'form': form}
+    return render(request,'blog/blog-single.html',contex)
         
 def blog_category(request,cat_name):
     posts = Post.objects.filter(status=1)
