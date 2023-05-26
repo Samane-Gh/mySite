@@ -1,10 +1,12 @@
 from django.contrib import messages
-from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render,get_object_or_404
 from blog.models import Post,Comment
 from blog.models import Category
 from django.utils import timezone
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
+from django.urls import reverse
 
 # Create your views here.
 def blog_view(request,**kwargs): 
@@ -44,10 +46,14 @@ def blog_single(request,pid=None):
     post.counted_views +=1
     next_post = Post.objects.filter(published_date__gt=post.published_date).order_by('published_date').first()
     prev_post =Post.objects.filter(published_date__lt=post.published_date).order_by('published_date').last()
-    comments = Comment.objects.filter(post = post.id,approved=True)
-    form = CommentForm()
-    contex = {'post': post,'next_post': next_post,'prev_post': prev_post,'comments': comments,'form': form}
-    return render(request,'blog/blog-single.html',contex)
+    if not post.login_required:
+        comments = Comment.objects.filter(post = post.id,approved=True)
+        form = CommentForm()
+        contex = {'post': post,'next_post': next_post,'prev_post': prev_post,'comments': comments,'form': form}
+        return render(request,'blog/blog-single.html',contex)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
+    
         
 def blog_category(request,cat_name):
     posts = Post.objects.filter(status=1)
