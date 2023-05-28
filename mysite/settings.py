@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'accounts',
     
+    
      
 ]
 
@@ -77,7 +78,6 @@ ROOT_URLCONF = 'mysite.urls'
 #robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
-
 
 
 TEMPLATES = [
@@ -167,3 +167,8 @@ INTERNAL_IPS = [
     
     '127.0.0.1',
 ]
+
+ACCOUNT_FORMS = {'signup': 'mysite.forms.MyCustomSignupForm'}
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+AUTHENTICATION_BACKENDS = ['accounts.models.EmailOrUsernameModelBackend']
