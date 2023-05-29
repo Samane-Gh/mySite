@@ -10,7 +10,6 @@ from accounts.models import EmailOrUsernameModelBackend
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
-            
             form = AuthenticationForm(request=request, data=request.POST)
             username = request.POST['username']
             password = request.POST['password']
@@ -18,8 +17,7 @@ def login_view(request):
             user = EmailOrUsernameModelBackend.authenticate(username, password)
             if user is not None:
                 login(request, user)
-                return redirect('/') 
-                
+                return redirect('/')    
         form = AuthenticationForm()
         context ={'form': form}    
         return render(request, 'accounts/login.html',context)
