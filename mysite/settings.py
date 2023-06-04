@@ -22,12 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-80$q%8&#gpa6&t1qwrgpal8v&aa*#p8-n*^#mi=144r_%9=-(s'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -57,7 +52,6 @@ INSTALLED_APPS = [
      
 ]
 
-SITE_ID = 2
 #captcha admin settings
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
@@ -101,15 +95,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
+
 
 
 # Password validation
@@ -150,13 +138,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    BASE_DIR / "statics",
-]
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT =BASE_DIR /'media'
+
 
 
 # Default primary key field type

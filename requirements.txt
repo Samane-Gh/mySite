@@ -1,0 +1,11 @@
+Django>3.2,<3.3
+pillow
+djando-multi-captcha-admin
+django-robots
+django-simple-captcha
+django-summernote
+django-taggit
+django-utils-six
+Faker
+django-compressor
+django-debug-toolbar
