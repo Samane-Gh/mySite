@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 from pathlib import Path
 import os
 
@@ -25,8 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Application definition
-DEBUG = True
-ALLOWED_HOSTS = []
+
 INSTALLED_APPS = [
     'multi_captcha_admin',
     'django.contrib.admin',

@@ -6,6 +6,6 @@ django-simple-captcha
 django-summernote
 django-taggit
 django-utils-six
-Faker
+faker
 django-compressor
 django-debug-toolbar
