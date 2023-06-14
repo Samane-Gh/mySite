@@ -158,3 +158,9 @@ LOGOUT_REDIRECT_URL = '/'
 AUTHENTICATION_BACKENDS = ['accounts.models.EmailOrUsernameModelBackend']
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+
+STATIC_ROOT = BASE_DIR / 'static'
+MEDIA_ROOT =BASE_DIR /'media'
+STATICFILES_DIRS = [
+    BASE_DIR / "statics",
+]
