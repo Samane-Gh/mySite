@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'accounts',
     'django_rest_passwordreset',
-    
+    'compressor',    
     
      
 ]
@@ -164,3 +164,18 @@ MEDIA_ROOT =BASE_DIR /'media'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
+
+COMPRESS_ENABLED = True
+COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
+if not COMPRESS_ENABLED:
+       COMPRESS_ENABLED = True
+       COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+       COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
